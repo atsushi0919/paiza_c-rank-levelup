@@ -41,6 +41,27 @@ end
 
 =end
 
+def solve(input_lines)
+  # input_lines を改行区切りで分割する
+  # 1行目を _ に代入（使わないので捨てる）
+  # 2行目以降を members 配列に格納
+  _, *members = input_lines.split("\n")
+
+  members.map! do |member|
+    name, age = member.split
+    "#{name} #{age.to_i + 1}"
+  end
+
+  # members を改行区切りにして末尾にも改行を加えた文字列に変換する
+  members.join("\n") << "\n"
+end
+
+puts solve(STDIN.read)
+
+exit
+
+=begin
+
 # [解答例2]
 def solve(input_lines)
   # 改行で分割して1行目を _, 2行目以降を members に代入
@@ -57,5 +78,7 @@ def solve(input_lines)
   # 改行で連結して末尾に改行を入れる
   members.join("\n") << "\n"
 end
+
+=end
 
 puts solve(STDIN.read)
