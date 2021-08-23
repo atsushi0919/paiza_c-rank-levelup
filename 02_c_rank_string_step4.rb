@@ -15,15 +15,15 @@ OUTPUT2 = <<~"EOS"
 EOS
 
 # [解答例1]
-n = gets.chomp
-zero = "0" * (3 - n.length)
-puts zero << n
+#n = gets.chomp
+#zero = "0" * (3 - n.length)
+#puts zero << n
 
 # [解答例2]
-puts gets.chomp.rjust(3, "0")
+#puts gets.chomp.rjust(3, "0")
 
 # [解答例3]
-printf("%03d\n", gets.to_i)
+puts sprintf("%03d", gets.to_i)
 
 # [解答例4]
-puts "%03d" % gets.to_i
+#puts "%03d" % gets.to_i

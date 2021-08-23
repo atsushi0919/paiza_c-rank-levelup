@@ -31,27 +31,30 @@ def solve(input_lines)
     # 終了時刻 分の計算
     f_m = s_m + w_m
     if f_m >= 60
-      f_m %= 60
+      f_m -= 60
       w_h += 1
     end
     # 終了時刻 時間の計算
     f_h = s_h + w_h
     if f_h >= 24
-      f_h %= 24
+      f_h -= 24
     end
 
-    # 終了時刻の時間・分を0埋め2桁の文字列に変換
+    # 時間・分を文字列に変換する
+    # 文字数が 1 なら 先頭に "0" を加えて埋め 2桁 にする
     f_h = f_h.to_s
-    f_h <<= "0" if f_h.length == 1
+    f_h = "0" << f_h if f_h.length == 1
     f_m = f_m.to_s
-    f_m <<= "0" if f_m.length == 1
+    f_m = "0" << f_m if f_m.length == 1
 
+    # hh:mm 形式の文字列を返す
     "#{f_h}:#{f_m}"
   end
+  # 処理結果の配列を改行区切りで連結し末尾に改行を連結
   result.join("\n") << "\n"
 end
 
-puts solve(INPUT2)
+puts solve(STDIN.read)
 
 exit
 
@@ -66,33 +69,32 @@ def solve(input_lines)
     # 終了時刻 分の計算
     f_m = s_m + w_m
     if f_m >= 60
-      f_m %= 60
+      f_m -= 60
       w_h += 1
     end
     # 終了時刻 時間の計算
     f_h = s_h + w_h
     if f_h >= 24
-      f_h %= 24
+      f_h -= 24
     end
 
     # 終了時刻の時間・分を0埋め2桁の文字列に変換
     "%02d:%02d" % [f_h, f_m]
   end
+  # 処理結果の配列を改行区切りで連結し末尾に改行を連結
   result.join("\n") << "\n"
 end
 
 puts solve(STDIN.read)
 
-exit
-
-# [参考]
+# [参考(Timeクラス)]
 def solve(input_lines)
   _, *schedules = input_lines.split("\n")
 
   result = schedules.map do |schedule|
     # 正規表現を使って ":" か " " で分割する
     s_h, s_m, w_h, w_m = schedule.split(/[: ]/).map(&:to_i)
-    # 開始時刻で Time クラスのインスタンスを生成する
+    # 開始時刻で Time クラスのインスタンスを生成する(時・分以外の情報はダミー)
     start_time = Time.local(Time.now.year, 1, 1, s_h, s_m)
     # 所要時間を秒に換算して開始時刻に加算する
     finish_time = start_time + 3600 * w_h + 60 * w_m

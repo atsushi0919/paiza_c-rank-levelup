@@ -17,14 +17,10 @@ OUTPUT2 = <<~"EOS"
 EOS
 
 # [解答例1]
-time = gets.split(":")
+time = gets.split(":").map(&:to_i)
 puts time
 
 # [解答例2]
-h, m = gets.split(":")
-puts[h, m]
-
-# [解答例3]
 h, m = gets.split(":")
 time = Time.local(2021, 1, 1, h, m)
 puts [time.hour, time.min]

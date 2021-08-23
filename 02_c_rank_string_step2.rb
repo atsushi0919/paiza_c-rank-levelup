@@ -17,25 +17,7 @@ OUTPUT2 = <<~"EOS"
   YES
 EOS
 
-=begin
 # [解答例1]
-a = gets.chomp
-s = gets.chomp
-if s.include?(a)
-  puts "YES"
-else
-  puts "NO"
-end
-=end
-
-=begin
-# [解答例2]
-a = gets.chomp
-s = gets.chomp
-puts s.include?(a) ? "YES" : "NO"
-=end
-
-# [解答例3]
 a = gets.chomp
 s = gets.chomp
 
@@ -47,3 +29,14 @@ s.length.times do |idx|
   end
 end
 puts result
+
+=begin
+# [解答例2]
+a = gets.chomp
+s = gets.chomp
+if s.include?(a)
+  puts "YES"
+else
+  puts "NO"
+end
+=end

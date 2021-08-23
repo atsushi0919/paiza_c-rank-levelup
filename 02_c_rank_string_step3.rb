@@ -22,10 +22,9 @@ b = (s[1].to_i + s[2].to_i).to_s
 puts a + b
 =end
 
-=begin
 # [解答例2]
-ary = gets.chomp.split("").map(&:to_i)
+ary = gets.split("").map(&:to_i)
+p ary
 a = (ary[0] + ary[3]).to_s
 b = (ary[1] + ary[2]).to_s
 puts a + b
-=end

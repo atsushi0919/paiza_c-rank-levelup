@@ -26,7 +26,8 @@ EOS
 # [解答例1]
 n = gets.to_i
 n.times do
-  puts gets.chomp.length
+  s = gets
+  puts s.length
 end
 
 # [解答例2]
