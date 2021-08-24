@@ -21,6 +21,9 @@ EOS
 
 # [解答例1]
 def solve(input_lines)
+  # input_lines を改行区切りで分割する
+  # 1行目を _ に代入（使わないので捨てる）
+  # 2行目以降を配列 schedules に格納
   _, *schedules = input_lines.split("\n")
 
   result = schedules.map do |schedule|
