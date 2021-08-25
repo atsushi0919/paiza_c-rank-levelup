@@ -5,7 +5,7 @@
 n = gets.to_i
 
 flag = false
-for _ in 0...n
+for i in 0...n
   if gets.to_i == 7
     flag = true
     break

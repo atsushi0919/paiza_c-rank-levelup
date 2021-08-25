@@ -3,11 +3,11 @@
 
 # [解答例1]
 n = gets.to_i
-numbers = gets.split.map(&:to_i)
+ary = gets.split.map(&:to_i)
 
 result = 0
 for idx in 0..n - 1
-  result += 1 if numbers[idx] % 3 == 0
+  result += 1 if ary[idx] % 3 == 0
 end
 puts result
 
