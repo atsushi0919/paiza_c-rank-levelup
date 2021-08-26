@@ -26,6 +26,34 @@ OUTPUT2 = <<~"EOS"
   0
 EOS
 
+def solve(input_lines)
+  input_lines = input_lines.split("\n")
+  n, m, k = input_lines.shift.split.map(&:to_i)
+  ary = []
+  for i in 0...n
+    ary << input_lines[i].split.map(&:to_i)
+  end
+
+  result = []
+  # 参加者を参照するループ
+  for n_i in 0...n
+    score = 0
+    # 書かれた番号を参照するループ
+    for m_i in 0...m
+      # 書かれた番号が当たりなら score +1
+      score += 1 if ary[n_i][m_i] == k
+    end
+    # 得点を result 末尾に追加
+    result << score
+  end
+  # 処理結果を改行で連結して末尾に改行を加える
+  result.join("\n") << "\n"
+end
+
+puts solve(STDIN.read)
+
+exit
+
 # [解答例1]
 def solve(input_lines)
   input_lines = input_lines.split("\n")
@@ -56,9 +84,12 @@ def solve(input_lines)
     line.split.map(&:to_i)
   end
 
-  result = ary.each.map do |numbers|
-    numbers.count { |number| number == k }
+  # 参加者(m個の番号が書かれた紙)を順に参照する
+  result = ary.each.map do |member|
+    # 得点を計算する
+    member.count { |num| num == k }
   end
+  # 処理結果を改行で連結して末尾に改行を加える
   result.join("\n") << "\n"
 end
 

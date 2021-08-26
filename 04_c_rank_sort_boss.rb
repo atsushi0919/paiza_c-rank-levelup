@@ -25,16 +25,17 @@ OUTPUT2 = <<~"EOS"
   5 0
 EOS
 
+=begin
 def solve(input_lines)
   input_lines = input_lines.split("\n")
   n = input_lines.shift.to_i
   ary = input_lines.shift(n).map { |line| line.split.map(&:to_i) }
-  ary.sort_by { |x| [x[1], x[0]] }.reverse
+  ary.sort_by! { |x| [x[1], x[0]] }.reverse!
+  ary.map { |item| item.join(" ") }.join("\n") << "\n"
 end
 
-p solve(INPUT2)
-
-exit
+puts solve(STDIN.read)
+=end
 
 def solve(input_lines)
   input_lines = input_lines.split("\n")
@@ -46,7 +47,7 @@ def solve(input_lines)
     inserted = false
     ary.each_with_index do |items, idx|
       a_g, a_s = items
-      if a_s < t_s || a_s == t_s && a_g < t_g
+      if t_s > a_s || t_s == a_s && t_g > a_g
         ary.insert(idx, [t_g, t_s])
         inserted = true
         break
@@ -54,10 +55,10 @@ def solve(input_lines)
     end
     ary << [t_g, t_s] if not inserted
   end
-  ary
+  ary.map { |item| item.join(" ") }.join("\n") << "\n"
 end
 
-p solve(INPUT1)
+puts solve()
 
 =begin
 n = gets.to_i

@@ -20,16 +20,8 @@ end
 
 # [解答例2]
 n = gets.to_i
-
-flag = false
-n.times do
-  if gets.to_i == 7
-    flag = true
-    break
-  end
-end
-
-puts flag ? "YES" : "NO"
+ary = n.times.map { gets.to_i }
+puts ary.include?(7) ? "YES" : "NO"
 
 =begin
 問題

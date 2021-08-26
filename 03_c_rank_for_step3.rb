@@ -1,10 +1,11 @@
 # インデックス取得 (paizaランク D 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_for_step3
 
+=begin
 # [解答例1]
 n = gets.to_i
 ary = []
-for _ in 0...n
+for i in 0...n
   ary << gets.to_i
 end
 k = gets.to_i
@@ -15,30 +16,14 @@ for idx in 0...n
     break
   end
 end
+=end
 
 # [解答例2]
 n = gets.to_i
 ary = n.times.map { gets.to_i }
 k = gets.to_i
 
-ary.each_with_index do |val, idx|
-  if val == k
-    puts idx + 1
-    break
-  end
-end
-
-# [解答例3]
-n = gets.to_i
-ary = n.times.map { gets.to_i }
-k = gets.to_i
-
-ary.each.with_index(1) do |val, idx|
-  if val == k
-    puts idx
-    break
-  end
-end
+puts ary.index(k) + 1
 
 =begin
 

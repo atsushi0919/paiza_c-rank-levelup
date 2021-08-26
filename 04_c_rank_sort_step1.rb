@@ -1,6 +1,7 @@
 # 昇順ソート (paizaランク D 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_sort_step1
 
+=begin
 # O(n log n)
 n = gets.to_i
 ary = n.times.map { gets.to_i }.sort
@@ -12,18 +13,13 @@ ary = []
 n.times { ary << rand(10000) }
 ary.sort!
 puts Time.now - start
+=end
 
-=begin
-# O(n^2)
-#n = gets.to_i
-n = 10000
-srand(0)
+n = gets.to_i
 
-start = Time.now
 ary = []
 n.times do
-  #t_n = gets.to_i
-  t_n = rand(10000)
+  t_n = gets.to_i
   inserted = false
   ary.each_with_index do |a_n, idx|
     if t_n < a_n
@@ -34,9 +30,7 @@ n.times do
   end
   ary << t_n if not inserted
 end
-puts Time.now - start
-#p ary
-=end
+puts ary
 
 =begin
 問題

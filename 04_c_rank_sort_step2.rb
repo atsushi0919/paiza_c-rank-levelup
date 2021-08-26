@@ -1,12 +1,13 @@
 # 降順ソート (paizaランク D 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_sort_step2
 
+=begin
 n = gets.to_i
 ary = n.times.map { gets.to_i }.sort.reverse
 puts ary
+=end
 
 n = gets.to_i
-
 ary = []
 n.times do
   t_n = gets.to_i
@@ -20,7 +21,7 @@ n.times do
   end
   ary << t_n if not inserted
 end
-p ary
+puts ary
 
 =begin
 問題

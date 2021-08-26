@@ -3,7 +3,9 @@
 
 n = gets.to_i
 ary = n.times.map { gets.split.map(&:to_i) }
-p ary.sort_by { |x| [x[0], x[1]] }.reverse
+ary.sort_by { |x| [x[0], x[1]] }.reverse.each do |item|
+  puts item.join(" ")
+end
 
 =begin
 n = gets.to_i
@@ -21,7 +23,7 @@ n.times do
   end
   ary << [t_a, t_b] if not inserted
 end
-p ary
+ary.each { |item| puts item.join(" ") }
 =end
 
 =begin
