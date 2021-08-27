@@ -14,12 +14,8 @@ q.times do
   b_to_c[b] = c
 end
 
-a_to_c = {}
-a_to_b.each { |key, val|
-  a_to_c[key] = b_to_c[val]
-}
-
-p a_to_c
+a_to_c = a_to_b.each.map { |key, val| [key, b_to_c[val]] }.sort.to_h
+a_to_c.each { |a, c| puts "#{a} #{c}" }
 
 =begin
 p 人のグループ A , q 人のグループ B , r 人のグループ C があります。
