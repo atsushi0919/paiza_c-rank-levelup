@@ -1,18 +1,18 @@
 def solve1(input_lines)
-  ary = []
+  sorted_ary = []
   input_lines.each do |t_g, t_s|
     inserted = false
-    ary.each_with_index do |items, idx|
+    sorted_ary.each_with_index do |items, idx|
       a_g, a_s = items
       if t_s > a_s || t_s == a_s && t_g > a_g
-        ary.insert(idx, [t_g, t_s])
+        sorted_ary.insert(idx, [t_g, t_s])
         inserted = true
         break
       end
     end
-    ary << [t_g, t_s] if not inserted
+    sorted_ary << [t_g, t_s] if not inserted
   end
-  ary.map { |item| item.join(" ") }.join("\n") << "\n"
+  sorted_ary.map { |item| item.join(" ") }.join("\n") << "\n"
 end
 
 def solve2(input_lines)
@@ -22,7 +22,7 @@ def solve2(input_lines)
 end
 
 srand(0)
-n = 10 ** 2
+n = 8000
 max_num = 1000
 ary = Array.new(n) { [rand(max_num), rand(max_num)] }
 
@@ -38,3 +38,4 @@ puts Time.now - start_time
 # solve2, n=10**3 -> 0.0079602
 # solve2, n=10**4 -> 0.0565067
 # solve2, n=10**5 -> 0.7052143
+# solve2, n=10**6 -> 8.8317392

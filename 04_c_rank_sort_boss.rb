@@ -25,6 +25,45 @@ OUTPUT2 = <<~"EOS"
   5 0
 EOS
 
+def solve(input_lines)
+  # 入力受け取り
+  input_lines = input_lines.split("\n")
+  n = input_lines.shift.to_i
+  ary = input_lines.shift(n).map do |line|
+    line.split.map(&:to_i)
+  end
+
+  # 銀の降順で金の降順に並び替える
+  sorted_ary = []
+  ary.each do |t_g, t_s|
+    inserted = false
+    sorted_ary.each_with_index do |item, idx|
+      a_g, a_s = item
+      if t_s > a_s || t_s == a_s && t_g > a_g
+        sorted_ary.insert(idx, [t_g, t_s])
+        inserted = true
+        break
+      end
+    end
+    sorted_ary << [t_g, t_s] if not inserted
+  end
+
+  # 行を改行で連結、行の要素を半角スペースで連結にして末尾に改行を追加
+  sorted_ary.map { |item| item.join(" ") }.join("\n") << "\n"
+end
+
+# 確認用コード
+p solve(INPUT1)
+# > "1 2\n2 1\n"
+p solve(INPUT1) == OUTPUT1
+# > true
+p solve(INPUT2)
+# > "0 4\n3 3\n2 3\n5 0\n"
+p solve(INPUT2) == OUTPUT2
+# > true
+
+exit
+
 =begin
 def solve(input_lines)
   input_lines = input_lines.split("\n")
