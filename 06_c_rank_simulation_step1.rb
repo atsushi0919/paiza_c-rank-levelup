@@ -1,18 +1,22 @@
-=begin
-条件を満たす最小の自然数 (paizaランク C 相当)
-問題にチャレンジして、ユーザー同士で解答を教え合ったり、コードを公開してみよう！
+# 条件を満たす最小の自然数 (paizaランク C 相当)
+# https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_step1
 
-シェア用URL:
-https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_step1
-問題文のURLをコピーする
-学習チケット所持数 6/6枚      
- チャレンジする言語
-Ruby
-他の言語でチャレンジする
-コードを書いて解いてみる
- チケットを3枚消費する
-問題
-Img 04 03 下記の問題をプログラミングしてみよう！
+num = 10000
+div = 13
+
+while num % div != 0
+  num += 1
+end
+
+puts num
+
+num = 10000
+div = 13
+
+puts num + (div - (num % div))
+
+=begin
+
 10000 以上かつ 13 で割り切れるような最小の自然数を求めてください。
 
 入力される値
