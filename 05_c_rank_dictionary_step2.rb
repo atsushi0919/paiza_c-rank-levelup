@@ -1,6 +1,31 @@
 # 辞書のデータ更新 (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_dictionary_step2
 
+入力例1
+2
+Kirishima
+Kyoko
+2
+Kyoko 1
+Kyoko 2
+Kyoko
+
+出力例1
+3
+
+入力例2
+3
+paiiza
+paiza
+paiiiza
+2
+paiiza 2
+paiiiza 3
+paiza
+
+出力例2
+0
+
 n = gets.to_i
 hash = {}
 n.times do
@@ -13,7 +38,7 @@ m.times do
   hash[key] += val.to_i
 end
 
-p hash[gets.chomp]
+puts hash[gets.chomp]
 
 =begin
 辞書のデータ更新 (paizaランク C 相当)

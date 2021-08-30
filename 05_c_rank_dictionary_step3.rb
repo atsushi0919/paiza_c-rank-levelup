@@ -1,6 +1,36 @@
 # 辞書データの順序 (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_dictionary_step3
 
+<<EOS
+
+入力例1
+2
+MIDORIKAWA
+KIRISHIMA
+2
+KIRISHIMA 1
+KIRISHIMA 2
+
+出力例1
+3
+0
+
+入力例2
+3
+PAIIZA
+PAIZA
+PAIIIZA
+2
+PAIIZA 2
+PAIIIZA 3
+
+出力例2
+3
+2
+0
+
+EOS
+
 n = gets.to_i
 hash = {}
 n.times do

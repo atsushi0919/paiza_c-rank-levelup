@@ -7,7 +7,7 @@ n.times do
   key, val = gets.split
   hash[key] = val.to_i
 end
- 
+
 puts hash[gets.chomp]
 
 =begin

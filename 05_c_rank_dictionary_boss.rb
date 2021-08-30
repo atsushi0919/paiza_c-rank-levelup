@@ -1,6 +1,83 @@
 # 辞書 (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_dictionary_boss
 
+INPUT1 = <<~"EOS"
+  2 2 2
+  2 1
+  1 2
+  1 1
+  2 2
+EOS
+OUTPUT1 = <<~"EOS"
+  1 2
+  2 1
+EOS
+
+INPUT2 = <<~"EOS"
+  2 3 4
+  1 3
+  2 1
+  2 3
+  3 3
+  1 4
+EOS
+OUTPUT2 = <<~"EOS"
+  1 3
+  2 4
+EOS
+
+=begin
+def solve(input_lines)
+  # 標準入力の受け取り
+  input_lines = input_lines.split("\n")
+  p, q, r = input_lines.shift.split.map(&:to_i)
+  a_to_b = {}
+  input_lines.shift(p).each do |line|
+    key, val = line.split.map(&:to_i)
+    a_to_b[key] = val
+  end
+  b_to_c = {}
+  input_lines.shift(q).each do |line|
+    key, val = line.split.map(&:to_i)
+    b_to_c[key] = val
+  end
+
+  # AグループとCグループの繋がりを調べる
+  a_to_c = {}
+  a_to_b.each do |key, val|
+    # a_to_b の値が b_to_c のキーとなる
+    a_to_c[key] = b_to_c[val]
+  end
+
+  # a_to_c をAグループの番号順でソートする([key, val] の配列になる）
+  sorted_ary = a_to_c.sort
+
+  # 行を改行で連結、行の要素を半角スペースで連結にして末尾に改行を追加
+  sorted_ary.map { |item| item.join(" ") }.join("\n") << "\n"
+end
+
+puts solve(STDIN.read)
+
+=end
+
+def solve(input_lines)
+  # 標準入力の受け取り
+  input_lines = input_lines.split("\n")
+  p, q, r = input_lines.shift.split.map(&:to_i)
+  a_to_b = input_lines.shift(p).map { |line| line.split.map(&:to_i) }.to_h
+  b_to_c = input_lines.shift(q).map { |line| line.split.map(&:to_i) }.to_h
+
+  # AグループとCグループの繋がりを調べる(to_h はなくてもOK)
+  a_to_c = a_to_b.map { |key, val| [key, b_to_c[val]] }.to_h
+
+  # a_to_c をAグループの番号順でソートして形式を整えて出力する
+  a_to_c.sort.map { |item| item.join(" ") }.join("\n") << "\n"
+end
+
+puts solve(STDIN.read)
+
+exit
+
 p, q, r = gets.split.map(&:to_i)
 a_to_b = {}
 p.times do
@@ -75,11 +152,11 @@ A グループから仕事を頼まれた B グループの人は必ずその仕
 1 1
 2 2
 
-出力例1
+OUTPUT1 = <<~"EOS"
 1 2
 2 1
 
-入力例2
+INPUT2 = <<~"EOS"
 2 3 4
 1 3
 2 1
@@ -88,7 +165,7 @@ A グループから仕事を頼まれた B グループの人は必ずその仕
 1 4
 
 
-出力例2
+OUTPUT2 = <<~"EOS"
 1 3
 2 4
 =end
