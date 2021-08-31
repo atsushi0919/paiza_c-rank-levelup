@@ -1,6 +1,25 @@
 # シミュレーションの練習 (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_step2
 
+# [解答例]
+<<EOS
+
+入力例1
+6
+3 2
+
+出力例1
+2
+
+入力例2
+10
+2 3
+
+出力例2
+3
+
+EOS
+
 n = gets.to_i
 a, b = gets.split.map(&:to_i)
 

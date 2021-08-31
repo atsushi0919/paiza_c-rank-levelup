@@ -1,22 +1,77 @@
 # シミュレーション (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_boss
 
-h = gets.to_i
-count = 2
-paiza, monster = [1, 1], [1, 1]
-h -= 2
+INPUT1 = <<~"EOS"
+  7
+EOS
 
-while h > 0
-  count += 1
-  p_atk = monster[1] + monster[0]
-  m_atk = paiza[1] * 2 + paiza[0]
+OUTPUT1 = <<~"EOS"
+  4
+EOS
 
-  paiza = [paiza[1], p_atk]
-  monster = [monster[1], m_atk]
-  h -= m_atk
+INPUT2 = <<~"EOS"
+  35
+EOS
+OUTPUT2 = <<~"EOS"
+  6
+EOS
+
+=begin
+def solve(input_line)
+  # 標準入力の受け取り
+  h = input_line.to_i
+
+  # 初期設定
+  count = 0
+  paiza, monster = [], []
+
+  # h が0を超えている間繰り返す
+  while h > 0
+    count += 1
+    # 2回目までは攻撃は1
+    if count < 3
+      paiza << 1
+      monster << 1
+    else
+      # [count - 2] -> 前回の攻撃
+      # [count - 3] -> 前々回の攻撃
+      paiza << monster[count - 2] + monster[count - 3]
+      monster << paiza[count - 2] * 2 + paiza[count - 3]
+    end
+    # [count - 1] -> 今回の攻撃
+    h -= monster[count - 1]
+  end
+  # 文字列型に変換して末尾に改行を追加する
+  count.to_s << "\n"
 end
 
-puts count
+puts solve(STDIN.read)
+=end
+
+def solve(input_line)
+  h = input_line.to_i
+
+  # 2回目で初期化
+  count = 2
+  paiza, monster = [1, 1], [1, 1]
+  h -= 2
+
+  while h > 0
+    count += 1
+    # paiza[1], monster[1] -> 前回の攻撃
+    # paiza[0], monster[0] -> 前々回の攻撃
+    p_atack = monster[1] + monster[0]
+    m_atack = paiza[1] * 2 + paiza[0]
+
+    # paiza, monster を上書きする
+    paiza = [paiza[1], p_atack]
+    monster = [monster[1], m_atack]
+    h -= m_atack
+  end
+  count.to_s << "\n"
+end
+
+puts solve(STDIN.read)
 
 =begin
 h = gets.to_i

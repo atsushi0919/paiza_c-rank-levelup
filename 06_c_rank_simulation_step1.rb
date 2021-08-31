@@ -1,6 +1,7 @@
 # 条件を満たす最小の自然数 (paizaランク C 相当)
 # https://paiza.jp/works/mondai/c_rank_level_up_problems/c_rank_simulation_step1
 
+# [解答例1]
 num = 10000
 div = 13
 
@@ -10,6 +11,7 @@ end
 
 puts num
 
+# [解答例1]
 num = 10000
 div = 13
 
